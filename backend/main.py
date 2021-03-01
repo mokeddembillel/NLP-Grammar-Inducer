@@ -25,5 +25,5 @@ for sent in sents_sby_dot_colon:
     
 # Creating a list of tags for each sentence
 sents_tags = []
-for sent in sents_tags:
+for sent in sents_tagged_words:
     sents_tags.append([word[1] for word in sent])
