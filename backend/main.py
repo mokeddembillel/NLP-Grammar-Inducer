@@ -27,3 +27,12 @@ for sent in sents_sby_dot_colon:
 sents_tags = []
 for sent in sents_tagged_words:
     sents_tags.append([word[1] for word in sent])
+
+# Creating a list of N-Grams for each sentence
+sents_rules = []
+from nltk import ngrams
+for i in range(len(sents_tags)):
+    sent_rules = []
+    for j in range(2, len(sents_tags[i])):
+        sent_rules += ngrams(sents_tags[i], j)
+    sents_rules.append(sent_rules)
