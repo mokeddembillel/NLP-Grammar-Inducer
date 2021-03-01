@@ -36,3 +36,12 @@ for i in range(len(sents_tags)):
     for j in range(2, len(sents_tags[i])):
         sent_rules += ngrams(sents_tags[i], j)
     sents_rules.append(sent_rules)
+
+# Creating a frequency distribution dictionary of rules
+rules_frequency_dict = {}
+for sent in sents_rules:
+    for rule in sent:
+        if rule in rules_frequency_dict:
+            rules_frequency_dict[rule] += 1
+        else:
+            rules_frequency_dict[rule] = 1
