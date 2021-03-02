@@ -5,7 +5,7 @@ def read_file(path):
     file = file.read()
     return file
 
-def get_freq_dist_dict(file):
+def n_gram_extraction(file):
     # Removing useless symbols
     file = file.replace(" ``/``", '') \
         .replace("''/'' ",'') \
@@ -33,10 +33,12 @@ def get_freq_dist_dict(file):
         for j in range(2, len(sents_tags[i])):
             sent_rules += ngrams(sents_tags[i], j)
         sents_rules.append(sent_rules)
-        
+    return sents_rules
+
+def frequency_distribution(n_grams):
     # Creating a frequency distribution dictionary of rules
     rules_frequency_dict = {}
-    for sent in sents_rules:
+    for sent in n_grams:
         for rule in sent:
             if rule in rules_frequency_dict:
                 rules_frequency_dict[rule] += 1
@@ -47,6 +49,7 @@ def get_freq_dist_dict(file):
 
 file = read_file('./brown/ca01')
 
-rules_frequency_dict = get_freq_dist_dict(file)
+n_grams = n_gram_extraction(file)
 
+rules_frequency_dict = frequency_distribution(n_grams)
 
