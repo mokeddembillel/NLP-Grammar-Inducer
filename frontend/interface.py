@@ -119,8 +119,96 @@ class Ui_MainWindow(object):
         self.content_bar.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.content_bar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.content_bar.setObjectName("content_bar")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.content_bar)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.side_bar = QtWidgets.QFrame(self.content_bar)
+        self.side_bar.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.side_bar.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.side_bar.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.side_bar.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.side_bar.setObjectName("side_bar")
+        self.formLayout = QtWidgets.QFormLayout(self.side_bar)
+        self.formLayout.setContentsMargins(10, 50, 10, 0)
+        self.formLayout.setObjectName("formLayout")
+        self.btn_training = QtWidgets.QPushButton(self.side_bar)
+        self.btn_training.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_training.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_training.setFont(font)
+        self.btn_training.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_training.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}\n"
+"")
+        self.btn_training.setObjectName("btn_training")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.btn_training)
+        self.btn_inference = QtWidgets.QPushButton(self.side_bar)
+        self.btn_inference.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_inference.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_inference.setFont(font)
+        self.btn_inference.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_inference.setStyleSheet("QPushButton {\n"
+"    color: rgb(255,255,255);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgb(255,255,255);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"")
+        self.btn_inference.setObjectName("btn_inference")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.btn_inference)
+        self.horizontalLayout_6.addWidget(self.side_bar)
+        self.conent_training = QtWidgets.QFrame(self.content_bar)
+        self.conent_training.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.conent_training.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.conent_training.setObjectName("conent_training")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.conent_training)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.stackedWidget = QtWidgets.QStackedWidget(self.conent_training)
+        self.stackedWidget.setStyleSheet("")
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.training = QtWidgets.QWidget()
+        self.training.setStyleSheet("background-color: none;")
+        self.training.setObjectName("training")
+        self.label_2 = QtWidgets.QLabel(self.training)
+        self.label_2.setGeometry(QtCore.QRect(280, 145, 341, 141))
+        font = QtGui.QFont()
+        font.setPointSize(40)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.stackedWidget.addWidget(self.training)
+        self.inference = QtWidgets.QWidget()
+        self.inference.setStyleSheet("background-color: none;")
+        self.inference.setObjectName("inference")
+        self.label = QtWidgets.QLabel(self.inference)
+        self.label.setGeometry(QtCore.QRect(300, 145, 271, 121))
+        font = QtGui.QFont()
+        font.setPointSize(40)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.stackedWidget.addWidget(self.inference)
+        self.horizontalLayout_7.addWidget(self.stackedWidget)
+        self.horizontalLayout_6.addWidget(self.conent_training)
         self.verticalLayout.addWidget(self.content_bar)
         self.credits_bar = QtWidgets.QFrame(self.shadow_frame)
+        self.credits_bar.setMinimumSize(QtCore.QSize(0, 30))
         self.credits_bar.setMaximumSize(QtCore.QSize(16777215, 30))
         self.credits_bar.setStyleSheet("background-color:none;")
         self.credits_bar.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -159,12 +247,17 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_title.setText(_translate("MainWindow", "Automatic Grammar Inducer"))
+        self.btn_training.setText(_translate("MainWindow", "Training"))
+        self.btn_inference.setText(_translate("MainWindow", "Inference"))
+        self.label_2.setText(_translate("MainWindow", "Page 2"))
+        self.label.setText(_translate("MainWindow", "Page 1"))
         self.label_credits.setText(_translate("MainWindow", "By: Billel Mokeddem and Ryad Boudrar"))
 
 
