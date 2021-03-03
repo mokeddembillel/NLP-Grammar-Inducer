@@ -84,31 +84,31 @@ class MainWindow(QMainWindow):
 "}\n"
 "")
         
-def mousePressEvent(self, event):
-        self.dragPos = event.globalPos()
-
-def maximize_restore(self):
-    global GLOBAL_STATE
-    status = GLOBAL_STATE
-
-    # IF NOT MAXIMIZED
-    if status == 0:
-        self.showMaximized()
-
-        # SET GLOBAL TO 1
-        GLOBAL_STATE = 1
-
-        # IF MAXIMIZED REMOVE MARGINS AND BORDER RADIUS
-        self.ui.shadow_layout.setContentsMargins(0, 0, 0, 0)
-        #self.ui.shadow_frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(38, 62, 81, 255), stop:1 rgba(7, 34, 56, 255)); border-radius: 0px;")
-        self.ui.btn_maximize.setToolTip("Restore")
-    else:
-        GLOBAL_STATE = 0
-        self.showNormal()
-        self.resize(self.width()+1, self.height()+1)
-        self.ui.shadow_layout.setContentsMargins(10, 10, 10, 10)
-        #self.ui.shadow_frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(38, 62, 81, 255), stop:1 rgba(7, 34, 56, 255)); border-radius: 10px;")
-        self.ui.btn_maximize.setToolTip("Maximize")
+    def mousePressEvent(self, event):
+            self.dragPos = event.globalPos()
+    
+    def maximize_restore(self):
+        global GLOBAL_STATE
+        status = GLOBAL_STATE
+    
+        # IF NOT MAXIMIZED
+        if status == 0:
+            self.showMaximized()
+    
+            # SET GLOBAL TO 1
+            GLOBAL_STATE = 1
+    
+            # IF MAXIMIZED REMOVE MARGINS AND BORDER RADIUS
+            self.ui.shadow_layout.setContentsMargins(0, 0, 0, 0)
+            #self.ui.shadow_frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(38, 62, 81, 255), stop:1 rgba(7, 34, 56, 255)); border-radius: 0px;")
+            self.ui.btn_maximize.setToolTip("Restore")
+        else:
+            GLOBAL_STATE = 0
+            self.showNormal()
+            self.resize(self.width()+1, self.height()+1)
+            self.ui.shadow_layout.setContentsMargins(10, 10, 10, 10)
+            #self.ui.shadow_frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(38, 62, 81, 255), stop:1 rgba(7, 34, 56, 255)); border-radius: 10px;")
+            self.ui.btn_maximize.setToolTip("Maximize")
         
 
 if __name__ == "__main__":
