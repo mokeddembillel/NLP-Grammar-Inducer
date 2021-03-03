@@ -81,7 +81,6 @@ def induce_grammar(path):
     sents_tags = get_tags(file)
     # Define rules list
     rules = []
-    
     while True:
         # Get N-grams of each sentence
         n_grams = n_gram_extraction(sents_tags)
