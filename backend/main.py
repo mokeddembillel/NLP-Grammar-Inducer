@@ -1,4 +1,3 @@
-
 def read_file(path):
     # Reading the corpus
     file = open(path)
@@ -7,10 +6,17 @@ def read_file(path):
 
 def get_tags(file):
     # Removing useless symbols
-    file = file.replace(" ``/``", '') \
-        .replace("''/'' ",'') \
-        .replace('(/( ','') \
-        .replace(')/)','')
+    #'\'','\"','.',';','^','~~','``',':',')','(','[',']','{','}','\'\'',','
+    #file = re.sub('``/``|''/''|(/(|)/)|,/,|*/*|\/\|;/;', '', file)
+    file = file.replace("``/``", '') \
+        .replace("''/''",'') \
+        .replace('(/(','') \
+        .replace(')/)','') \
+        .replace(',/,','') \
+        .replace("``/``",'') \
+        .replace('--/--','') \
+        .replace(';/;','') \
+        .replace('\\/\\','')
     
     # Splitting into sentences by '.' (sby <==> split by)
     sents_sby_dot = file.split('./.')
@@ -56,22 +62,38 @@ def get_max_n_gram(frequency_distribution):
 def substitution(sents_tags, rule_name, rule_tags):
     for i in range(len(sents_tags)):
         sent_str = ' '.join(sents_tags[i])
-        sents_tags[i] = sent_str.replace(rule_tags, rule_name).split()
+        # Replace in the middle of the sentence
+        sent_str = sent_str.replace(' ' + rule_tags + ' ', ' ' + rule_name + ' ')
+        # Replace at the start of the sentence
+        if (sent_str.startswith(rule_tags + ' ')):
+            sent_str = rule_name + ' ' + sent_str[len(rule_tags + ' '):]
+        # Replace at the end of the sentence
+        if (sent_str.endswith(' ' + rule_tags)):
+            sent_str = sent_str[: -len(' ' + rule_tags)] + ' ' + rule_name 
+        sents_tags[i] = sent_str.split()
     return sents_tags
         
         
+def induce_grammar(path):
+    # Read file
+    file = read_file(path)
+    # Get a list of tags of each sentence
+    sents_tags = get_tags(file)
+    # Define rules list
+    rules = []
     
+    while True:
+        # Get N-grams of each sentence
+        n_grams = n_gram_extraction(sents_tags)
+        # Get Frequency distribution list
+        frequency_distribution_list = frequency_distribution(n_grams)
+        # Break if finished
+        if len(frequency_distribution_list) == 0:
+            break
+        # Append the most frequent rule
+        rules.append(('NT' + str(len(rules)+1), get_max_n_gram(frequency_distribution_list)))
+        # Substitution in tags of each sentence
+        sents_tags = substitution(sents_tags, rules[-1][0], rules[-1][1])
+    return rules
 
-file = read_file('./brown/ca01')
-
-sents_tags = get_tags(file)
-
-n_grams = n_gram_extraction(sents_tags)
-
-frequency_distribution_list = frequency_distribution(n_grams)
-
-rules = []
-
-rules.append(('NT1', get_max_n_gram(frequency_distribution_list)))
-
-sents_tags = substitution(sents_tags, rules[-1][0], rules[-1][1])
+grammar = induce_grammar('./brown/ca01')
