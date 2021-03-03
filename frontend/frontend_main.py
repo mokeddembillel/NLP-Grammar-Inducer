@@ -2,6 +2,9 @@
 import sys
 
 from PyQt5.QtWidgets import *
+from PyQt5 import QtCore
+
+
 
 # GUI FILE
 from interface import Ui_MainWindow
@@ -12,9 +15,24 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        ## PAGES
+        
+        ## UI functions
         ########################################################################
+        
+        # Define a frameless UI
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        # Implementing the Dragging feature
+        def move_window(event):
+            if event.buttons() == QtCore.Qt.LeftButton:
+                self.move(self.pos() + event.globalPos() - self.dragPos)
+                self.dragPos = event.globalPos()
+                event.accept()
+        
+        self.ui.title_bar.mouseMoveEvent = move_window
+    
+
 
         # PAGE Training
         self.ui.btn_training.clicked.connect(self.training_btn_clicked)
@@ -30,19 +48,22 @@ class MainWindow(QMainWindow):
         self.show()
         ## ==> END ##
         
-        
+
+    def mousePressEvent(self, event):
+        self.dragPos = event.globalPos()
+
 
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)
         self.ui.btn_training.setStyleSheet("background-color: rgb(22, 210, 152);\n"
 "    color: rgb(38, 62, 81);\n")
         self.ui.btn_inference.setStyleSheet("QPushButton {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 0.8);\n"
 "    background-color: rgba(255, 255, 255, 0.1);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 1);\n"
 "    background-color: rgba(255, 255, 255, 0.2);\n"
 "}\n"
 "")
@@ -54,17 +75,20 @@ class MainWindow(QMainWindow):
 "    color: rgb(38, 62, 81);\n")
         
         self.ui.btn_training.setStyleSheet("QPushButton {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 0.8);\n"
 "    background-color: rgba(255, 255, 255, 0.1);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 1);\n"
 "    background-color: rgba(255, 255, 255, 0.2);\n"
 "}\n"
 "")
         
-        
+
+
+    
+    
         
         
 
