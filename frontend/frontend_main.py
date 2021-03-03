@@ -2,6 +2,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
+from PyQt5.QtGui import QColor
 
 from interface import Ui_MainWindow
 
@@ -19,6 +20,16 @@ class MainWindow(QMainWindow):
         # Define a frameless UI
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        
+        # Set DropShadow Effect
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor(0, 0, 0, 100))
+        
+        # Apply shadow to frame
+        self.ui.shadow_frame.setGraphicsEffect(self.shadow)
 
         # Implementing the Dragging feature
         def move_window(event):
