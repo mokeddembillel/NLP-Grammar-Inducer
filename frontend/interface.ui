@@ -189,7 +189,7 @@ QPushButton:hover {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btn_close">
+              <widget class="QPushButton" name="btn_maximize">
                <property name="minimumSize">
                 <size>
                  <width>17</width>
@@ -218,7 +218,7 @@ QPushButton:hover {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btn_maximize">
+              <widget class="QPushButton" name="btn_close">
                <property name="minimumSize">
                 <size>
                  <width>17</width>
@@ -374,12 +374,12 @@ QPushButton:hover {
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
-	color: rgb(255,255,255);
+	color: rgba(255, 255, 255, 0.7);
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
 QPushButton:hover {
-	color: rgb(255,255,255);
+	color: rgba(255, 255, 255, 1);
 	background-color: rgba(255, 255, 255, 0.2);
 }
 </string>

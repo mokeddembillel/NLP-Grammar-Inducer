@@ -84,10 +84,10 @@ class Ui_MainWindow(object):
         self.btn_minimize.setText("")
         self.btn_minimize.setObjectName("btn_minimize")
         self.horizontalLayout_3.addWidget(self.btn_minimize)
-        self.btn_close = QtWidgets.QPushButton(self.frame_btns)
-        self.btn_close.setMinimumSize(QtCore.QSize(17, 17))
-        self.btn_close.setMaximumSize(QtCore.QSize(17, 17))
-        self.btn_close.setStyleSheet("QPushButton {\n"
+        self.btn_maximize = QtWidgets.QPushButton(self.frame_btns)
+        self.btn_maximize.setMinimumSize(QtCore.QSize(17, 17))
+        self.btn_maximize.setMaximumSize(QtCore.QSize(17, 17))
+        self.btn_maximize.setStyleSheet("QPushButton {\n"
 "    border: none;\n"
 "    border-radius: 8px;\n"
 "    background-color: rgb(110, 214, 113);\n"
@@ -95,13 +95,13 @@ class Ui_MainWindow(object):
 "QPushButton:hover { \n"
 "    background-color: rgba(110, 214, 113,150);\n"
 "}")
-        self.btn_close.setText("")
-        self.btn_close.setObjectName("btn_close")
-        self.horizontalLayout_3.addWidget(self.btn_close)
-        self.btn_maximize = QtWidgets.QPushButton(self.frame_btns)
-        self.btn_maximize.setMinimumSize(QtCore.QSize(17, 17))
-        self.btn_maximize.setMaximumSize(QtCore.QSize(17, 17))
-        self.btn_maximize.setStyleSheet("QPushButton {\n"
+        self.btn_maximize.setText("")
+        self.btn_maximize.setObjectName("btn_maximize")
+        self.horizontalLayout_3.addWidget(self.btn_maximize)
+        self.btn_close = QtWidgets.QPushButton(self.frame_btns)
+        self.btn_close.setMinimumSize(QtCore.QSize(17, 17))
+        self.btn_close.setMaximumSize(QtCore.QSize(17, 17))
+        self.btn_close.setStyleSheet("QPushButton {\n"
 "    border: none;\n"
 "    border-radius: 8px;\n"
 "    background-color: rgb(235, 78, 78);\n"
@@ -109,9 +109,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover { \n"
 "    background-color: rgba(235, 78, 78,150);\n"
 "}")
-        self.btn_maximize.setText("")
-        self.btn_maximize.setObjectName("btn_maximize")
-        self.horizontalLayout_3.addWidget(self.btn_maximize)
+        self.btn_close.setText("")
+        self.btn_close.setObjectName("btn_close")
+        self.horizontalLayout_3.addWidget(self.btn_close)
         self.horizontalLayout.addWidget(self.frame_btns)
         self.verticalLayout.addWidget(self.title_bar)
         self.content_bar = QtWidgets.QFrame(self.shadow_frame)
@@ -161,12 +161,12 @@ class Ui_MainWindow(object):
         self.btn_inference.setFont(font)
         self.btn_inference.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.btn_inference.setStyleSheet("QPushButton {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
 "    background-color: rgba(255, 255, 255, 0.1);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    color: rgb(255,255,255);\n"
+"    color: rgba(255, 255, 255, 1);\n"
 "    background-color: rgba(255, 255, 255, 0.2);\n"
 "}\n"
 "")
