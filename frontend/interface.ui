@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>1022</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -427,6 +427,9 @@ QPushButton:hover {
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
                <property name="currentIndex">
                 <number>0</number>
                </property>
@@ -475,16 +478,16 @@ QPushButton:hover {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="corpus_frame">
+                     <widget class="QFrame" name="training_group_1">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_4">
+                      <layout class="QHBoxLayout" name="horizontalLayout_12">
                        <property name="spacing">
-                        <number>0</number>
+                        <number>20</number>
                        </property>
                        <property name="leftMargin">
                         <number>0</number>
@@ -499,15 +502,60 @@ QPushButton:hover {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="corpus_text">
-                         <property name="font">
-                          <font>
-                           <family>Tw Cen MT</family>
-                           <pointsize>10</pointsize>
-                          </font>
+                        <widget class="QFrame" name="training_corpus_frame">
+                         <property name="enabled">
+                          <bool>true</bool>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPlainTextEdit {
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_9">
+                          <property name="spacing">
+                           <number>20</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPlainTextEdit" name="training_corpus_2">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
 	background-color: rgba(225,225,225,0.1);
 	color: rgba(225,225,225,0.7);
 	border-radius: 10px;
@@ -518,13 +566,107 @@ QPlainTextEdit:focus {
 	background-color: rgba(225,225,225,0.2);
 	color: rgba(225,225,225,1);
 }</string>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="plainText">
+                             <string>Corpus
+</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="training_grammar_frame">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
                          </property>
-                         <property name="horizontalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         <property name="maximumSize">
+                          <size>
+                           <width>250</width>
+                           <height>16777215</height>
+                          </size>
                          </property>
-                         <property name="plainText">
-                          <string>Training</string>
+                         <property name="sizeIncrement">
+                          <size>
+                           <width>100</width>
+                           <height>0</height>
+                          </size>
                          </property>
+                         <property name="baseSize">
+                          <size>
+                           <width>200</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_8">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SetDefaultConstraint</enum>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPlainTextEdit" name="training_grammar_2">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="plainText">
+                             <string>Grammar
+</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </widget>
                        </item>
                       </layout>
@@ -532,6 +674,12 @@ QPlainTextEdit:focus {
                     </item>
                     <item>
                      <widget class="QFrame" name="training_btns">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -564,7 +712,7 @@ QPlainTextEdit:focus {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_load">
+                        <widget class="QPushButton" name="training_btn_load_corpus">
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -603,73 +751,12 @@ QPushButton:pressed {
 }</string>
                          </property>
                          <property name="text">
-                          <string>Load</string>
+                          <string>Load Corpus</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeType">
-                          <enum>QSizePolicy::Expanding</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>5</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="btn_train">
-                         <property name="minimumSize">
-                          <size>
-                           <width>180</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>180</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Tw Cen MT</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPushButton {
-	color: rgba(255, 255, 255, 0.7);
-	background-color: rgba(255, 255, 255, 0.1);
-}
-
-QPushButton:hover {
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(255, 255, 255, 0.2);
-}
-
-
-QPushButton:pressed {
-	background-color: rgb(22, 210, 152);
-	color: rgb(38, 62, 81);
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Train</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_2">
+                        <spacer name="training_hs1">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
                          </property>
@@ -682,7 +769,7 @@ QPushButton:pressed {
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="btn_save">
+                        <widget class="QPushButton" name="training_btn_generate_grammar">
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -722,7 +809,65 @@ QPushButton:pressed {
 }</string>
                          </property>
                          <property name="text">
-                          <string>Save</string>
+                          <string>Generate Grammar</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="training_hs2">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="training_btn_save_grammar">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Save Grammar</string>
                          </property>
                         </widget>
                        </item>
@@ -779,16 +924,16 @@ QPushButton:pressed {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="corpus_test_frame">
+                     <widget class="QFrame" name="inference_group_1">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_7">
+                      <layout class="QHBoxLayout" name="horizontalLayout_13">
                        <property name="spacing">
-                        <number>0</number>
+                        <number>20</number>
                        </property>
                        <property name="leftMargin">
                         <number>0</number>
@@ -803,15 +948,60 @@ QPushButton:pressed {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="corpus_text_2">
-                         <property name="font">
-                          <font>
-                           <family>Tw Cen MT</family>
-                           <pointsize>10</pointsize>
-                          </font>
+                        <widget class="QFrame" name="inference_text_frame">
+                         <property name="enabled">
+                          <bool>true</bool>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPlainTextEdit {
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_7">
+                          <property name="spacing">
+                           <number>20</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPlainTextEdit" name="inference_text">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
 	background-color: rgba(225,225,225,0.1);
 	color: rgba(225,225,225,0.7);
 	border-radius: 10px;
@@ -822,20 +1012,308 @@ QPlainTextEdit:focus {
 	background-color: rgba(225,225,225,0.2);
 	color: rgba(225,225,225,1);
 }</string>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="plainText">
+                             <string>Sentence:
+
+Tags:
+</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPlainTextEdit" name="inference_precision">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>50</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                            </property>
+                            <property name="verticalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="plainText">
+                             <string>Precision
+</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="inference_group_2">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>60</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_14">
+                             <property name="spacing">
+                              <number>20</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <spacer name="inference_hs3">
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>40</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="inference_btn_previous">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>180</width>
+                                 <height>60</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>180</width>
+                                 <height>60</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Tw Cen MT</family>
+                                 <pointsize>12</pointsize>
+                                </font>
+                               </property>
+                               <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Previous</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="inference_btn_next">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>180</width>
+                                 <height>60</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>180</width>
+                                 <height>60</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Tw Cen MT</family>
+                                 <pointsize>12</pointsize>
+                                </font>
+                               </property>
+                               <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Next </string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <spacer name="inference_hs4">
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>40</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="inference_grammar_frame">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
                          </property>
-                         <property name="horizontalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         <property name="maximumSize">
+                          <size>
+                           <width>250</width>
+                           <height>16777215</height>
+                          </size>
                          </property>
-                         <property name="plainText">
-                          <string>Inference</string>
+                         <property name="sizeIncrement">
+                          <size>
+                           <width>100</width>
+                           <height>0</height>
+                          </size>
                          </property>
+                         <property name="baseSize">
+                          <size>
+                           <width>200</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_11">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SetDefaultConstraint</enum>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPlainTextEdit" name="inference_grammar">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="plainText">
+                             <string>Grammar
+</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </widget>
                        </item>
                       </layout>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="training_btns_2">
+                     <widget class="QFrame" name="inference_btns">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -852,9 +1330,6 @@ QPlainTextEdit:focus {
                        <property name="spacing">
                         <number>0</number>
                        </property>
-                       <property name="sizeConstraint">
-                        <enum>QLayout::SetDefaultConstraint</enum>
-                       </property>
                        <property name="leftMargin">
                         <number>0</number>
                        </property>
@@ -868,7 +1343,7 @@ QPlainTextEdit:focus {
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_load_2">
+                        <widget class="QPushButton" name="inference_btn_load_grammar">
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -907,73 +1382,12 @@ QPushButton:pressed {
 }</string>
                          </property>
                          <property name="text">
-                          <string>Load</string>
+                          <string>Load Grammar</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_3">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeType">
-                          <enum>QSizePolicy::Expanding</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>5</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="btn_train_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>180</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>180</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Tw Cen MT</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPushButton {
-	color: rgba(255, 255, 255, 0.7);
-	background-color: rgba(255, 255, 255, 0.1);
-}
-
-QPushButton:hover {
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(255, 255, 255, 0.2);
-}
-
-
-QPushButton:pressed {
-	background-color: rgb(22, 210, 152);
-	color: rgb(38, 62, 81);
-}</string>
-                         </property>
-                         <property name="text">
-                          <string>Train</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_4">
+                        <spacer name="inference_hs1">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
                          </property>
@@ -986,7 +1400,7 @@ QPushButton:pressed {
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="btn_save_2">
+                        <widget class="QPushButton" name="inference_btn_load_text">
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -1026,7 +1440,65 @@ QPushButton:pressed {
 }</string>
                          </property>
                          <property name="text">
-                          <string>Save</string>
+                          <string>Load Text</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="inference_hs2">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="inference_btn_save_inference">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Inference</string>
                          </property>
                         </widget>
                        </item>
