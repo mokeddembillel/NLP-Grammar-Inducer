@@ -130,7 +130,9 @@ class Ui_MainWindow(object):
         self.side_bar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.side_bar.setObjectName("side_bar")
         self.formLayout = QtWidgets.QFormLayout(self.side_bar)
-        self.formLayout.setContentsMargins(10, 50, 10, 0)
+        self.formLayout.setContentsMargins(20, 50, 0, 0)
+        self.formLayout.setHorizontalSpacing(0)
+        self.formLayout.setVerticalSpacing(20)
         self.formLayout.setObjectName("formLayout")
         self.btn_training = QtWidgets.QPushButton(self.side_bar)
         self.btn_training.setMinimumSize(QtCore.QSize(180, 60))
@@ -173,39 +175,287 @@ class Ui_MainWindow(object):
         self.btn_inference.setObjectName("btn_inference")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.btn_inference)
         self.horizontalLayout_6.addWidget(self.side_bar)
-        self.conent_training = QtWidgets.QFrame(self.content_bar)
-        self.conent_training.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.conent_training.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.conent_training.setObjectName("conent_training")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.conent_training)
+        self.main_content = QtWidgets.QFrame(self.content_bar)
+        self.main_content.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.main_content.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.main_content.setObjectName("main_content")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.main_content)
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_7.setSpacing(0)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.stackedWidget = QtWidgets.QStackedWidget(self.conent_training)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.main_content)
         self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.training = QtWidgets.QWidget()
         self.training.setStyleSheet("background-color: none;")
         self.training.setObjectName("training")
-        self.label_2 = QtWidgets.QLabel(self.training)
-        self.label_2.setGeometry(QtCore.QRect(280, 145, 341, 141))
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.training)
+        self.verticalLayout_2.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_2.setSpacing(20)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.training_content = QtWidgets.QFrame(self.training)
+        self.training_content.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.training_content.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.training_content.setObjectName("training_content")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.training_content)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(20)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.corpus_frame = QtWidgets.QFrame(self.training_content)
+        self.corpus_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.corpus_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.corpus_frame.setObjectName("corpus_frame")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.corpus_frame)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.corpus_text = QtWidgets.QPlainTextEdit(self.corpus_frame)
         font = QtGui.QFont()
-        font.setPointSize(40)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(10)
+        self.corpus_text.setFont(font)
+        self.corpus_text.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgba(225,225,225,0.1);\n"
+"    color: rgba(225,225,225,0.7);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"}\n"
+"\n"
+"QPlainTextEdit:focus {\n"
+"    background-color: rgba(225,225,225,0.2);\n"
+"    color: rgba(225,225,225,1);\n"
+"}")
+        self.corpus_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.corpus_text.setObjectName("corpus_text")
+        self.verticalLayout_4.addWidget(self.corpus_text)
+        self.verticalLayout_3.addWidget(self.corpus_frame)
+        self.training_btns = QtWidgets.QFrame(self.training_content)
+        self.training_btns.setMaximumSize(QtCore.QSize(16777215, 70))
+        self.training_btns.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.training_btns.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.training_btns.setObjectName("training_btns")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.training_btns)
+        self.horizontalLayout_8.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.btn_load = QtWidgets.QPushButton(self.training_btns)
+        self.btn_load.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_load.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_load.setFont(font)
+        self.btn_load.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_load.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_load.setObjectName("btn_load")
+        self.horizontalLayout_8.addWidget(self.btn_load)
+        spacerItem = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem)
+        self.btn_train = QtWidgets.QPushButton(self.training_btns)
+        self.btn_train.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_train.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_train.setFont(font)
+        self.btn_train.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_train.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_train.setObjectName("btn_train")
+        self.horizontalLayout_8.addWidget(self.btn_train)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem1)
+        self.btn_save = QtWidgets.QPushButton(self.training_btns)
+        self.btn_save.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_save.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_save.setFont(font)
+        self.btn_save.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_save.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_save.setObjectName("btn_save")
+        self.horizontalLayout_8.addWidget(self.btn_save)
+        self.verticalLayout_3.addWidget(self.training_btns)
+        self.verticalLayout_2.addWidget(self.training_content)
         self.stackedWidget.addWidget(self.training)
         self.inference = QtWidgets.QWidget()
         self.inference.setStyleSheet("background-color: none;")
         self.inference.setObjectName("inference")
-        self.label = QtWidgets.QLabel(self.inference)
-        self.label.setGeometry(QtCore.QRect(300, 145, 271, 121))
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.inference)
+        self.verticalLayout_5.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_5.setSpacing(20)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.inference_content = QtWidgets.QFrame(self.inference)
+        self.inference_content.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.inference_content.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.inference_content.setObjectName("inference_content")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.inference_content)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setSpacing(20)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.corpus_test_frame = QtWidgets.QFrame(self.inference_content)
+        self.corpus_test_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.corpus_test_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.corpus_test_frame.setObjectName("corpus_test_frame")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.corpus_test_frame)
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.corpus_text_2 = QtWidgets.QPlainTextEdit(self.corpus_test_frame)
         font = QtGui.QFont()
-        font.setPointSize(40)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(10)
+        self.corpus_text_2.setFont(font)
+        self.corpus_text_2.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgba(225,225,225,0.1);\n"
+"    color: rgba(225,225,225,0.7);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"}\n"
+"\n"
+"QPlainTextEdit:focus {\n"
+"    background-color: rgba(225,225,225,0.2);\n"
+"    color: rgba(225,225,225,1);\n"
+"}")
+        self.corpus_text_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.corpus_text_2.setObjectName("corpus_text_2")
+        self.verticalLayout_7.addWidget(self.corpus_text_2)
+        self.verticalLayout_6.addWidget(self.corpus_test_frame)
+        self.training_btns_2 = QtWidgets.QFrame(self.inference_content)
+        self.training_btns_2.setMaximumSize(QtCore.QSize(16777215, 70))
+        self.training_btns_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.training_btns_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.training_btns_2.setObjectName("training_btns_2")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.training_btns_2)
+        self.horizontalLayout_9.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.btn_load_2 = QtWidgets.QPushButton(self.training_btns_2)
+        self.btn_load_2.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_load_2.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_load_2.setFont(font)
+        self.btn_load_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_load_2.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_load_2.setObjectName("btn_load_2")
+        self.horizontalLayout_9.addWidget(self.btn_load_2)
+        spacerItem2 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem2)
+        self.btn_train_2 = QtWidgets.QPushButton(self.training_btns_2)
+        self.btn_train_2.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_train_2.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_train_2.setFont(font)
+        self.btn_train_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_train_2.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_train_2.setObjectName("btn_train_2")
+        self.horizontalLayout_9.addWidget(self.btn_train_2)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem3)
+        self.btn_save_2 = QtWidgets.QPushButton(self.training_btns_2)
+        self.btn_save_2.setMinimumSize(QtCore.QSize(180, 60))
+        self.btn_save_2.setMaximumSize(QtCore.QSize(180, 60))
+        font = QtGui.QFont()
+        font.setFamily("Tw Cen MT")
+        font.setPointSize(12)
+        self.btn_save_2.setFont(font)
+        self.btn_save_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_save_2.setStyleSheet("QPushButton {\n"
+"    color: rgba(255, 255, 255, 0.7);\n"
+"    background-color: rgba(255, 255, 255, 0.1);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: rgba(255, 255, 255, 1);\n"
+"    background-color: rgba(255, 255, 255, 0.2);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(22, 210, 152);\n"
+"    color: rgb(38, 62, 81);\n"
+"}")
+        self.btn_save_2.setObjectName("btn_save_2")
+        self.horizontalLayout_9.addWidget(self.btn_save_2)
+        self.verticalLayout_6.addWidget(self.training_btns_2)
+        self.verticalLayout_5.addWidget(self.inference_content)
         self.stackedWidget.addWidget(self.inference)
         self.horizontalLayout_7.addWidget(self.stackedWidget)
-        self.horizontalLayout_6.addWidget(self.conent_training)
+        self.horizontalLayout_6.addWidget(self.main_content)
         self.verticalLayout.addWidget(self.content_bar)
         self.credits_bar = QtWidgets.QFrame(self.shadow_frame)
         self.credits_bar.setMinimumSize(QtCore.QSize(0, 30))
@@ -256,8 +506,14 @@ class Ui_MainWindow(object):
         self.label_title.setText(_translate("MainWindow", "Automatic Grammar Inducer"))
         self.btn_training.setText(_translate("MainWindow", "Training"))
         self.btn_inference.setText(_translate("MainWindow", "Inference"))
-        self.label_2.setText(_translate("MainWindow", "Page 2"))
-        self.label.setText(_translate("MainWindow", "Page 1"))
+        self.corpus_text.setPlainText(_translate("MainWindow", "Training"))
+        self.btn_load.setText(_translate("MainWindow", "Load"))
+        self.btn_train.setText(_translate("MainWindow", "Train"))
+        self.btn_save.setText(_translate("MainWindow", "Save"))
+        self.corpus_text_2.setPlainText(_translate("MainWindow", "Inference"))
+        self.btn_load_2.setText(_translate("MainWindow", "Load"))
+        self.btn_train_2.setText(_translate("MainWindow", "Train"))
+        self.btn_save_2.setText(_translate("MainWindow", "Save"))
         self.label_credits.setText(_translate("MainWindow", "By: Billel Mokeddem and Ryad Boudrar"))
 
 

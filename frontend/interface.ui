@@ -297,14 +297,20 @@ QPushButton:hover {
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QFormLayout" name="formLayout">
+             <property name="horizontalSpacing">
+              <number>0</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>20</number>
+             </property>
              <property name="leftMargin">
-              <number>10</number>
+              <number>20</number>
              </property>
              <property name="topMargin">
               <number>50</number>
              </property>
              <property name="rightMargin">
-              <number>10</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
               <number>0</number>
@@ -393,7 +399,7 @@ QPushButton:hover {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="conent_training">
+           <widget class="QFrame" name="main_content">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -428,47 +434,609 @@ QPushButton:hover {
                 <property name="styleSheet">
                  <string notr="true">background-color: none;</string>
                 </property>
-                <widget class="QLabel" name="label_2">
-                 <property name="geometry">
-                  <rect>
-                   <x>280</x>
-                   <y>145</y>
-                   <width>341</width>
-                   <height>141</height>
-                  </rect>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="spacing">
+                  <number>20</number>
                  </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>40</pointsize>
-                  </font>
+                 <property name="leftMargin">
+                  <number>20</number>
                  </property>
-                 <property name="text">
-                  <string>Page 2</string>
+                 <property name="topMargin">
+                  <number>20</number>
                  </property>
-                </widget>
+                 <property name="rightMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="training_content">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <property name="spacing">
+                     <number>20</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="corpus_frame">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_4">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QPlainTextEdit" name="corpus_text">
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                         </property>
+                         <property name="horizontalScrollBarPolicy">
+                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         </property>
+                         <property name="plainText">
+                          <string>Training</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="training_btns">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>70</height>
+                       </size>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_8">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetDefaultConstraint</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QPushButton" name="btn_load">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Load</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Expanding</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>5</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_train">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Train</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_2">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_save">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Save</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
                <widget class="QWidget" name="inference">
                 <property name="styleSheet">
                  <string notr="true">background-color: none;</string>
                 </property>
-                <widget class="QLabel" name="label">
-                 <property name="geometry">
-                  <rect>
-                   <x>300</x>
-                   <y>145</y>
-                   <width>271</width>
-                   <height>121</height>
-                  </rect>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <property name="spacing">
+                  <number>20</number>
                  </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>40</pointsize>
-                  </font>
+                 <property name="leftMargin">
+                  <number>20</number>
                  </property>
-                 <property name="text">
-                  <string>Page 1</string>
+                 <property name="topMargin">
+                  <number>20</number>
                  </property>
-                </widget>
+                 <property name="rightMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="inference_content">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <property name="spacing">
+                     <number>20</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="corpus_test_frame">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_7">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QPlainTextEdit" name="corpus_text_2">
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                         </property>
+                         <property name="horizontalScrollBarPolicy">
+                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         </property>
+                         <property name="plainText">
+                          <string>Inference</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="training_btns_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>70</height>
+                       </size>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_9">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetDefaultConstraint</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QPushButton" name="btn_load_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Load</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_3">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Expanding</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>5</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_train_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Train</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_4">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_save_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>180</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Tw Cen MT</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="layoutDirection">
+                          <enum>Qt::LeftToRight</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+QPushButton:hover {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+QPushButton:pressed {
+	background-color: rgb(22, 210, 152);
+	color: rgb(38, 62, 81);
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Save</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </widget>
              </item>
