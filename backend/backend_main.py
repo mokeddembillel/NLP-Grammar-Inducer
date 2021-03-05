@@ -97,4 +97,10 @@ def induce_grammar(path):
         sents_tags = substitution(sents_tags, rules[-1][0], rules[-1][1])
     return rules,freq
 
-#grammar = induce_grammar('./brown/ca01')
+def get_predecessor(rule):
+    # Helper function used in Equation 3 
+    sub_rule=[]
+    for i in range(len(rule)-1):
+        sub_rule.append(rule[i])
+    sub_rule = tuple(sub_rule)
+    return sub_rule
