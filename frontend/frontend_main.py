@@ -67,14 +67,20 @@ class MainWindow(QMainWindow):
         ## Backend Variables
         ########################################################################
         
-        # Defining the corpus
+        # The corpus
         self.corpus = None 
+        
+        # The grammar
+        self.grammar = None
         
         ## UI Event Listeners
         ########################################################################
         
         # Load corpus
         self.ui.training_btn_load_corpus.clicked.connect(self.training_btn_load_corpus)
+        
+        # Generate Grammar
+        self.ui.training_btn_generate_grammar.clicked.connect(self.training_btn_generate_grammar)
         
         # Show window
         self.show()
@@ -91,6 +97,12 @@ class MainWindow(QMainWindow):
                 file += backend_main.read_file(file_name)
             self.ui.training_corpus.setPlainText(file)
             self.corpus = file
+    
+    def training_btn_generate_grammar(self):
+        self.grammar, _ = backend_main.induce_grammar(self.corpus)
+        self.ui.training_grammar.setPlainText('Grammar:\n')
+        for rule in self.grammar:  
+            self.ui.training_grammar.appendPlainText(rule[0] + ' ==> ' + rule[1])
 
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)
