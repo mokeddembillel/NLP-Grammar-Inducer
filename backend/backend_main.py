@@ -79,6 +79,8 @@ def induce_grammar(path):
     file = read_file(path)
     # Get a list of tags of each sentence
     sents_tags = get_tags(file)
+    n_grams = n_gram_extraction(sents_tags)
+    freq = frequency_distribution(n_grams)
     # Define rules list
     rules = []
     while True:
@@ -93,6 +95,6 @@ def induce_grammar(path):
         rules.append(('NT' + str(len(rules)+1), get_max_n_gram(frequency_distribution_list)))
         # Substitution in tags of each sentence
         sents_tags = substitution(sents_tags, rules[-1][0], rules[-1][1])
-    return rules
+    return rules,freq
 
-grammar = induce_grammar('./brown/ca01')
+#grammar = induce_grammar('./brown/ca01')
