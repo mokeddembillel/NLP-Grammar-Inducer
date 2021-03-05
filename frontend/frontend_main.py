@@ -1,4 +1,3 @@
-
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
@@ -6,7 +5,7 @@ from PyQt5.QtCore import QDir
 from PyQt5.QtGui import QColor
 
 from interface import Ui_MainWindow
-
+import re
 sys.path.append('../backend')
 import backend_main
 
@@ -82,6 +81,9 @@ class MainWindow(QMainWindow):
         # Generate Grammar
         self.ui.training_btn_generate_grammar.clicked.connect(self.training_btn_generate_grammar)
         
+        # Save Grammar
+        self.ui.training_btn_save_grammar.clicked.connect(self.training_btn_save_grammar)
+        
         # Show window
         self.show()
     
@@ -101,9 +103,22 @@ class MainWindow(QMainWindow):
     def training_btn_generate_grammar(self):
         self.grammar, _ = backend_main.induce_grammar(self.corpus)
         self.ui.training_grammar.setPlainText('Grammar:\n')
+        self.ui.inference_grammar.setPlainText('Grammar:\n')
+
         for rule in self.grammar:  
             self.ui.training_grammar.appendPlainText(rule[0] + ' ==> ' + rule[1])
-
+            self.ui.inference_grammar.appendPlainText(rule[0] + ' ==> ' + rule[1])
+        
+    def training_btn_save_grammar(self):
+        import time 
+        path = '../Grammars/Grammar'
+        time = time.ctime()
+        time = str(time).replace(' ','_').replace(':','_')
+        path = path + time + '.txt'
+        file=open(path,"w")
+        for rule in self.grammar:
+            file.write(rule[0] + ' ==> ' + rule[1] + '\n')
+        
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)
         self.ui.btn_training.setStyleSheet("background-color: rgb(22, 210, 152);\n"
