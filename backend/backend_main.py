@@ -104,3 +104,10 @@ def get_predecessor(rule):
         sub_rule.append(rule[i])
     sub_rule = tuple(sub_rule)
     return sub_rule
+
+def get_frequency(frequencies,rule):
+    # Get Frequency of rule
+    for frequency in frequencies:
+        if frequency[0] == rule:
+            return frequency[1]
+    return 0
