@@ -2,9 +2,13 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
+from PyQt5.QtCore import QDir
 from PyQt5.QtGui import QColor
 
 from interface import Ui_MainWindow
+
+sys.path.append('../backend')
+import backend_main
 
 GLOBAL_STATE = 0
 
@@ -60,9 +64,33 @@ class MainWindow(QMainWindow):
         # PAGE Inference
         self.ui.btn_inference.clicked.connect(self.inference_btn_clicked)
         
+        ## Backend Variables
+        ########################################################################
+        
+        # Defining the corpus
+        self.corpus = None 
+        
+        ## UI Event Listeners
+        ########################################################################
+        
+        # Load corpus
+        self.ui.training_btn_load_corpus.clicked.connect(self.training_btn_load_corpus)
+        
         # Show window
         self.show()
+    
+    def training_btn_load_corpus(self):
+        dlg = QFileDialog()
+        dlg.setFileMode(QFileDialog.ExistingFiles)
+        dlg.setFilter(QDir.Files)
         
+        if dlg.exec_():
+            file_names = dlg.selectedFiles()
+            file = ''
+            for file_name in file_names:
+                file += backend_main.read_file(file_name)
+            self.ui.training_corpus.setPlainText(file)
+            self.corpus = file
 
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)

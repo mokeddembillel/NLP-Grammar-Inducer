@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1022, 619)
+        MainWindow.resize(1030, 671)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.shadow_layout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -225,17 +225,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setSpacing(20)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.training_corpus_2 = QtWidgets.QPlainTextEdit(self.training_corpus_frame)
+        self.training_corpus = QtWidgets.QPlainTextEdit(self.training_corpus_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.training_corpus_2.sizePolicy().hasHeightForWidth())
-        self.training_corpus_2.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.training_corpus.sizePolicy().hasHeightForWidth())
+        self.training_corpus.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Tw Cen MT")
         font.setPointSize(10)
-        self.training_corpus_2.setFont(font)
-        self.training_corpus_2.setStyleSheet("QPlainTextEdit {\n"
+        self.training_corpus.setFont(font)
+        self.training_corpus.setStyleSheet("QPlainTextEdit {\n"
 "    background-color: rgba(225,225,225,0.1);\n"
 "    color: rgba(225,225,225,0.7);\n"
 "    border-radius: 10px;\n"
@@ -323,9 +323,9 @@ class Ui_MainWindow(object):
 " QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "     background: none;\n"
 " }")
-        self.training_corpus_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.training_corpus_2.setObjectName("training_corpus_2")
-        self.verticalLayout_9.addWidget(self.training_corpus_2)
+        self.training_corpus.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.training_corpus.setObjectName("training_corpus")
+        self.verticalLayout_9.addWidget(self.training_corpus)
         self.horizontalLayout_12.addWidget(self.training_corpus_frame)
         self.training_grammar_frame = QtWidgets.QFrame(self.training_group_1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
@@ -344,17 +344,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.training_grammar_2 = QtWidgets.QPlainTextEdit(self.training_grammar_frame)
+        self.training_grammar = QtWidgets.QPlainTextEdit(self.training_grammar_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.training_grammar_2.sizePolicy().hasHeightForWidth())
-        self.training_grammar_2.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.training_grammar.sizePolicy().hasHeightForWidth())
+        self.training_grammar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Tw Cen MT")
         font.setPointSize(10)
-        self.training_grammar_2.setFont(font)
-        self.training_grammar_2.setStyleSheet("QPlainTextEdit {\n"
+        self.training_grammar.setFont(font)
+        self.training_grammar.setStyleSheet("QPlainTextEdit {\n"
 "    background-color: rgba(225,225,225,0.1);\n"
 "    color: rgba(225,225,225,0.7);\n"
 "    border-radius: 10px;\n"
@@ -442,9 +442,9 @@ class Ui_MainWindow(object):
 " QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "     background: none;\n"
 " }")
-        self.training_grammar_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.training_grammar_2.setObjectName("training_grammar_2")
-        self.verticalLayout_8.addWidget(self.training_grammar_2)
+        self.training_grammar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.training_grammar.setObjectName("training_grammar")
+        self.verticalLayout_8.addWidget(self.training_grammar)
         self.horizontalLayout_12.addWidget(self.training_grammar_frame)
         self.verticalLayout_3.addWidget(self.training_group_1)
         self.training_btns = QtWidgets.QFrame(self.training_content)
@@ -1134,20 +1134,8 @@ class Ui_MainWindow(object):
         self.label_title.setText(_translate("MainWindow", "Automatic Grammar Inducer"))
         self.btn_training.setText(_translate("MainWindow", "Training"))
         self.btn_inference.setText(_translate("MainWindow", "Inference"))
-        self.training_corpus_2.setPlainText(_translate("MainWindow", "Corpus:\n"
-"\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
-""))
-        self.training_grammar_2.setPlainText(_translate("MainWindow", "Grammar:\n"
+        self.training_corpus.setPlainText(_translate("MainWindow", "Corpus:"))
+        self.training_grammar.setPlainText(_translate("MainWindow", "Grammar:\n"
 "\n"
 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
