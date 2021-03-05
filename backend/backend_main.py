@@ -73,13 +73,12 @@ def substitution(sents_tags, rule_name, rule_tags):
         sents_tags[i] = sent_str.split()
     return sents_tags
         
-        
-def induce_grammar(path):
-    # Read file
-    file = read_file(path)
+def induce_grammar(file):
     # Get a list of tags of each sentence
     sents_tags = get_tags(file)
+    # Get N-grams
     n_grams = n_gram_extraction(sents_tags)
+    # Get Frequency distribution
     freq = frequency_distribution(n_grams)
     # Define rules list
     rules = []
