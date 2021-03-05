@@ -84,6 +84,9 @@ class MainWindow(QMainWindow):
         # Save Grammar
         self.ui.training_btn_save_grammar.clicked.connect(self.training_btn_save_grammar)
         
+        # Load Grammar
+        self.ui.inference_btn_load_grammar.clicked.connect(self.inference_btn_load_grammar)
+        
         # Show window
         self.show()
     
@@ -118,6 +121,23 @@ class MainWindow(QMainWindow):
         file=open(path,"w")
         for rule in self.grammar:
             file.write(rule[0] + ' ==> ' + rule[1] + '\n')
+            
+    def inference_btn_load_grammar(self):
+        dlg = QFileDialog()
+        dlg.setFileMode(QFileDialog.AnyFile)
+        dlg.setFilter(QDir.Files)
+        if dlg.exec_():
+            file_name = dlg.selectedFiles()
+            file = open(file_name[0],"r")
+            file = file.readlines()
+            self.grammar = []
+            self.ui.training_grammar.setPlainText('Grammar:\n')
+            self.ui.inference_grammar.setPlainText('Grammar:\n')
+            for line in file:
+                m = re.search(r'(NT[0-9]+) ==> (.*)',line)
+                self.grammar.append((m.group(1),m.group(2)))
+                self.ui.training_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
+                self.ui.inference_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
         
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)
