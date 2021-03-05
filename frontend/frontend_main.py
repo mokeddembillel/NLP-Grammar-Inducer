@@ -66,11 +66,14 @@ class MainWindow(QMainWindow):
         ## Backend Variables
         ########################################################################
         
-        # The corpus
+        # Corpus
         self.corpus = None 
         
-        # The grammar
+        # Grammar
         self.grammar = None
+        
+        # Test sentences with tags
+        self.sents_tags_test = None
         
         ## UI Event Listeners
         ########################################################################
@@ -86,6 +89,10 @@ class MainWindow(QMainWindow):
         
         # Load Grammar
         self.ui.inference_btn_load_grammar.clicked.connect(self.inference_btn_load_grammar)
+        
+        # Load Text
+        self.ui.inference_btn_load_text.clicked.connect(self.inference_btn_load_text)
+      
         
         # Show window
         self.show()
@@ -138,7 +145,24 @@ class MainWindow(QMainWindow):
                 self.grammar.append((m.group(1),m.group(2)))
                 self.ui.training_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
                 self.ui.inference_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
+    
+    def inference_btn_load_text(self):
+        dlg = QFileDialog()
+        dlg.setFileMode(QFileDialog.AnyFile)
+        dlg.setFilter(QDir.Files)
         
+        if dlg.exec_():
+            file_name = dlg.selectedFiles()
+            file = backend_main.read_file(file_name[0])
+            file = backend_main.tag_sentence(file)
+            self.sents_tags_test = backend_main.get_tags(file, words=True)
+            
+            self.ui.inference_sents.setPlainText('Sentence:')
+            self.ui.inference_tags.setPlainText('Tags:')
+            self.ui.inference_sents.appendPlainText(' '.join([word[0] for word in self.sents_tags_test[0]]))
+            self.ui.inference_tags.appendPlainText(' '.join([word[1] for word in self.sents_tags_test[0]]))
+
+
     def training_btn_clicked(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.training)
         self.ui.btn_training.setStyleSheet("background-color: rgb(22, 210, 152);\n"
