@@ -29,7 +29,12 @@ def get_tags(file):
     # Creating a list of tags for each sentence
     sents_tags = []
     for sent in sents_sby_dot_colon:
-        sents_tags.append([word.split('/')[1] for word in sent.split()])
+        tags = []
+        for word in sent.split():
+            word_tag = word.split('/')
+            if len(word_tag) > 1:
+                tags.append(word_tag[1])
+        sents_tags.append(tags)
     return sents_tags
 
 def n_gram_extraction(sents_tags):
