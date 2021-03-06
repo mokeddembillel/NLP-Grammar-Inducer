@@ -121,3 +121,27 @@ def get_frequency(frequencies,rule):
         if frequency[0] == rule:
             return frequency[1]
     return 0
+
+def my_brown_tagger():
+    from nltk.corpus import brown
+    from nltk import UnigramTagger
+    from nltk import NgramTagger
+    from nltk import DefaultTagger
+
+    sample = brown.tagged_sents(categories=['news', 'adventure', 'lore', 'mystery', 'romance'])
+    default_tagger = DefaultTagger('NN')
+    uni_tagger = UnigramTagger(sample, cutoff=0, backoff=default_tagger)
+    quad_tagger = NgramTagger(4, sample, cutoff=0, backoff=uni_tagger)
+    return quad_tagger
+
+
+def tag_sentence(sent):
+    from nltk.tokenize import word_tokenize
+    sent = word_tokenize(sent)
+    my_tagger = my_brown_tagger()
+    t = my_tagger.tag(sent)
+    text=""
+    for i in t:
+        text1= i[0].lower()+'/'+i[1].lower()+' '
+        text+=text1
+    return text
