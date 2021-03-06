@@ -75,6 +75,9 @@ class MainWindow(QMainWindow):
         # Test sentences with tags
         self.sents_tags_test = None
         
+        # The number Of printed setntence
+        self.printed_sentence = 0
+        
         ## UI Event Listeners
         ########################################################################
         
@@ -92,11 +95,17 @@ class MainWindow(QMainWindow):
         
         # Load Text
         self.ui.inference_btn_load_text.clicked.connect(self.inference_btn_load_text)
-      
+        
+        # Previous Sentence
+        self.ui.inference_btn_previous.clicked.connect(self.inference_btn_previous)
+        
+        # Next Sentence
+        self.ui.inference_btn_next.clicked.connect(self.inference_btn_next)
+        
         
         # Show window
         self.show()
-    
+        
     def training_btn_load_corpus(self):
         dlg = QFileDialog()
         dlg.setFileMode(QFileDialog.ExistingFiles)
@@ -109,6 +118,8 @@ class MainWindow(QMainWindow):
                 file += backend_main.read_file(file_name)
             self.ui.training_corpus.setPlainText(file)
             self.corpus = file
+            self.ui.training_btn_generate_grammar.setEnabled(True)
+
     
     def training_btn_generate_grammar(self):
         self.grammar, _ = backend_main.induce_grammar(self.corpus)
@@ -118,6 +129,9 @@ class MainWindow(QMainWindow):
         for rule in self.grammar:  
             self.ui.training_grammar.appendPlainText(rule[0] + ' ==> ' + rule[1])
             self.ui.inference_grammar.appendPlainText(rule[0] + ' ==> ' + rule[1])
+        self.ui.training_btn_save_grammar.setEnabled(True)
+        if self.sents_tags_test is not None and self.grammar is not None:
+            self.ui.inference_btn_inference.setEnabled(True)
         
     def training_btn_save_grammar(self):
         import time 
@@ -145,6 +159,9 @@ class MainWindow(QMainWindow):
                 self.grammar.append((m.group(1),m.group(2)))
                 self.ui.training_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
                 self.ui.inference_grammar.appendPlainText(m.group(1) + ' ==> ' + m.group(2))
+            self.ui.training_btn_save_grammar.setEnabled(True)
+            if self.sents_tags_test is not None and self.grammar is not None:
+                self.ui.inference_btn_inference.setEnabled(True)
     
     def inference_btn_load_text(self):
         dlg = QFileDialog()
@@ -154,13 +171,71 @@ class MainWindow(QMainWindow):
         if dlg.exec_():
             file_name = dlg.selectedFiles()
             file = backend_main.read_file(file_name[0])
-            file = backend_main.tag_sentence(file)
-            self.sents_tags_test = backend_main.get_tags(file, words=True)
+            # Check if text is already tagged
+            def text_tagged(file):
+                i, counter = 0,0
+                while 1:
+                    if file[i] == '/':
+                        counter += 1
+                    if counter > 3:
+                        return True
+                    if i > 30:
+                        break
+                    i += 1
+                return False
             
-            self.ui.inference_sents.setPlainText('Sentence:')
-            self.ui.inference_tags.setPlainText('Tags:')
+            if not text_tagged(file): 
+                file = backend_main.tag_sentence(file)
+                
+            self.sents_tags_test = backend_main.get_tags(file, words=True)
+            # Update Plains
+            self.ui.inference_sents.setPlainText('')
+            self.ui.inference_tags.setPlainText('')
             self.ui.inference_sents.appendPlainText(' '.join([word[0] for word in self.sents_tags_test[0]]))
             self.ui.inference_tags.appendPlainText(' '.join([word[1] for word in self.sents_tags_test[0]]))
+            # Update sentence number label
+            self.ui.inference_sents_number.setText('Sentence number ' + str(self.printed_sentence + 1) + ' from ' + str(len(self.sents_tags_test)))
+            # Update buttons status
+            self.ui.inference_btn_previous.setEnabled(False)
+            if len(self.sents_tags_test) > 1:
+                self.ui.inference_btn_next.setEnabled(True)
+            if self.sents_tags_test is not None and self.grammar is not None:
+                self.ui.inference_btn_inference.setEnabled(True)
+                
+    def inference_btn_previous(self):
+        self.printed_sentence -= 1
+        # Update sentence plain
+        self.ui.inference_sents.setPlainText('')
+        self.ui.inference_sents.appendPlainText(' '.join([word[0] for word in self.sents_tags_test[self.printed_sentence]]))
+        # Update tags plain
+        self.ui.inference_tags.setPlainText('')
+        self.ui.inference_tags.appendPlainText(' '.join([word[1] for word in self.sents_tags_test[self.printed_sentence]]))
+        # Update sentence number label
+        self.ui.inference_sents_number.setText('Sentence number ' + str(self.printed_sentence + 1) + ' from ' + str(len(self.sents_tags_test)))
+
+        # Update precision plain
+        if self.printed_sentence == 0:
+            self.ui.inference_btn_previous.setEnabled(False)
+        self.ui.inference_btn_next.setEnabled(True)
+        
+    def inference_btn_next(self):
+        self.printed_sentence += 1
+        # Update sentence plain
+        self.ui.inference_sents.setPlainText('')
+        self.ui.inference_sents.appendPlainText(' '.join([word[0] for word in self.sents_tags_test[self.printed_sentence]]))
+        # Update tags plain
+        self.ui.inference_tags.setPlainText('')
+        self.ui.inference_tags.appendPlainText(' '.join([word[1] for word in self.sents_tags_test[self.printed_sentence]]))
+        # Update sentence number label
+        self.ui.inference_sents_number.setText('Sentence number ' + str(self.printed_sentence + 1) + ' from ' + str(len(self.sents_tags_test)))
+
+
+        # Update precision plain
+
+        if self.printed_sentence == len(self.sents_tags_test) - 1:
+            self.ui.inference_btn_next.setEnabled(False)
+        self.ui.inference_btn_previous.setEnabled(True)
+            
 
 
     def training_btn_clicked(self):
