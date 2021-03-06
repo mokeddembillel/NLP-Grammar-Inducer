@@ -37,6 +37,10 @@ def get_tags(file, words=False):
                 if len(word_tag) > 1:
                     tags.append(word_tag[1])
             sents_tags.append(tags)
+    # Remove void sentences
+    for sent in sents_tags:
+        if len(sent) == 0:
+            sents_tags.remove(sent)
     return sents_tags
 
 def n_gram_extraction(sents_tags):
