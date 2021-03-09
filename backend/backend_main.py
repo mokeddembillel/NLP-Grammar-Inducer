@@ -1,3 +1,14 @@
+from nltk import ngrams
+from nltk.corpus import brown
+from nltk import UnigramTagger
+from nltk import NgramTagger
+from nltk import DefaultTagger
+from pickle import load
+from nltk.tokenize import word_tokenize
+import re
+from nltk.parse import RecursiveDescentParser, EarleyChartParser
+import nltk
+
 def read_file(path):
     # Reading the corpus
     file = open(path)
@@ -6,14 +17,17 @@ def read_file(path):
 
 def get_tags(file, words=False):
     # Removing useless symbols
+    #print(file)
     file = file.replace("``/``", '') \
         .replace("''/''",'') \
         .replace('(/(','') \
         .replace(')/)','') \
-        .replace(',/,','') \
         .replace("``/``",'') \
         .replace('--/--','') \
         .replace(';/;','') \
+        .replace('?','.') \
+        .replace('!','.') \
+        .replace(',/,','') \
         .replace('\\/\\','')
     
     # Splitting into sentences by '.' (sby <==> split by)
@@ -23,35 +37,47 @@ def get_tags(file, words=False):
     sents_sby_dot_colon = []
     for sent in sents_sby_dot:
         sents_sby_dot_colon += sent.split(':/:')
-    
     # Creating a list of tags for each sentence
     sents_tags = []
     if words:
         for sent in sents_sby_dot_colon:
-            sents_tags.append([tuple(word.split('/')) for word in sent.split()])
+            sent_tags = []
+            for word in sent.split():
+                word_tag = tuple(word.split('/'))
+                if len(word_tag) == 2:
+                    sent_tags.append(word_tag)
+            sents_tags.append(sent_tags)
     else:
         for sent in sents_sby_dot_colon:
             tags = []
             for word in sent.split():
-                word_tag = word.split('/')
-                if len(word_tag) > 1:
+                word_tag = tuple(word.split('/'))
+                if len(word_tag) == 2:
                     tags.append(word_tag[1])
             sents_tags.append(tags)
+    
     # Remove void sentences
     for sent in sents_tags:
         if len(sent) == 0:
             sents_tags.remove(sent)
     return sents_tags
 
-def n_gram_extraction(sents_tags):
+def n_gram_extraction_one_sent(sent_tags, uni_bi_grams):
+    # Creating a list of N-Grams for each sentence
+    
+    
+    sent_rules = []
+    if len(sent_tags) < 30:
+        for j in range(uni_bi_grams, len(sent_tags)):
+            sent_rules += ngrams(sent_tags, j)
+    #return sorted(sent_rules, key=lambda item: len(item), reverse=True)
+    return sent_rules
+
+def n_gram_extraction(sents_tags, uni_bi_grams=2):
     # Creating a list of N-Grams for each sentence
     sents_rules = []
-    from nltk import ngrams
     for i in range(len(sents_tags)):
-        sent_rules = []
-        for j in range(2, len(sents_tags[i])):
-            sent_rules += ngrams(sents_tags[i], j)
-        sents_rules.append(sent_rules)
+        sents_rules.append(n_gram_extraction_one_sent(sents_tags[i], uni_bi_grams))
     return sents_rules
 
 def frequency_distribution(n_grams):
@@ -84,13 +110,14 @@ def substitution(sents_tags, rule_name, rule_tags):
         sents_tags[i] = sent_str.split()
     return sents_tags
         
+##############################################################################
 def induce_grammar(file):
     # Get a list of tags of each sentence
     sents_tags = get_tags(file)
     # Get N-grams
-    n_grams = n_gram_extraction(sents_tags)
+    n_g = n_gram_extraction(sents_tags)
     # Get Frequency distribution
-    freq = frequency_distribution(n_grams)
+    freq = frequency_distribution(n_g)
     # Define rules list
     rules = []
     while True:
@@ -105,38 +132,33 @@ def induce_grammar(file):
         rules.append(('NT' + str(len(rules)+1), get_max_n_gram(frequency_distribution_list)))
         # Substitution in tags of each sentence
         sents_tags = substitution(sents_tags, rules[-1][0], rules[-1][1])
-    return rules,freq
+        
+    for i in sents_tags:
+        rules.append(('NT' + str(len(rules)+1), ' '.join(i)))
+        
+    return rules, freq, len(sents_tags)
 
-def get_predecessor(rule):
-    # Helper function used in Equation 3 
-    sub_rule=[]
-    for i in range(len(rule)-1):
-        sub_rule.append(rule[i])
-    sub_rule = tuple(sub_rule)
-    return sub_rule
-
-def get_frequency(frequencies,rule):
-    # Get Frequency of rule
-    for frequency in frequencies:
-        if frequency[0] == rule:
-            return frequency[1]
-    return 0
+##############################################################################
 
 def my_brown_tagger():
-    from nltk.corpus import brown
-    from nltk import UnigramTagger
-    from nltk import NgramTagger
-    from nltk import DefaultTagger
-
-    sample = brown.tagged_sents(categories=['news', 'adventure', 'lore', 'mystery', 'romance'])
-    default_tagger = DefaultTagger('NN')
-    uni_tagger = UnigramTagger(sample, cutoff=0, backoff=default_tagger)
-    quad_tagger = NgramTagger(4, sample, cutoff=0, backoff=uni_tagger)
+    
+    
+    # sample = brown.tagged_sents(categories=['news', 'editorial', 'reviews', 'religion', 'humor', 'science_fiction', 'adventure', 'lore', 'mystery', 'romance'])
+    # default_tagger = DefaultTagger('NN')
+    # uni_tagger = UnigramTagger(sample, cutoff=0, backoff=default_tagger)
+    # quad_tagger = NgramTagger(4, sample, cutoff=0, backoff=uni_tagger)
+    
+    # from pickle import dump
+    # output = open('../Tagger/my_tagger.pkl', 'wb')
+    # dump(quad_tagger, output, -1)
+    # output.close()
+    
+    input_ = open('../Tagger/my_tagger.pkl', 'rb')
+    quad_tagger = load(input_)
+    input_.close()
     return quad_tagger
 
-
 def tag_sentence(sent):
-    from nltk.tokenize import word_tokenize
     sent = word_tokenize(sent)
     my_tagger = my_brown_tagger()
     t = my_tagger.tag(sent)
@@ -145,3 +167,4 @@ def tag_sentence(sent):
         text1= i[0].lower()+'/'+i[1].lower()+' '
         text+=text1
     return text
+
