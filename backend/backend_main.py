@@ -276,3 +276,63 @@ def precision_one_S(freq, sent_tags):
             p *= (get_frequency_tuple(freq,predecessor) / get_frequency_tag(freq, predecessor[0]))
     return p
 
+
+# def precision(files_names, grammar, sents_tags_test):
+#     sum1 , sum2 = 0 , 0
+    
+#     file = ''
+#     for file_name in files_names:
+#         #print(file)
+#         file += open(str(file_name)).read()
+    
+#     sum1 , sum2 = 0 , 0
+    
+#     sents_tags = get_tags(file)
+    
+#     n_grams = n_gram_extraction(sents_tags)
+    
+#     freq = frequency_distribution(n_grams)
+    
+#     rewards__precision_list = []
+#     for sentence in sents_tags_test :
+#         #print(sentence)
+#         tags = [word[1] for word in sentence]
+#         rewards__precision_list.append( (Reward_Factor(grammar, tags), precision_one_S(freq, tags)))
+#         sum1 += rewards__precision_list[-1][0] * rewards__precision_list[-1][1]
+#         #print('P : ', p_sentence)
+#         #print('reward factor: ', Reward_Factor(freq, tags))
+#         sum2 += rewards__precision_list[-1][1]
+#     if sum2 == 0 : return 0
+#     # print(sum1)
+#     # print(sum2)
+#     return sum1/sum2, rewards__precision_list
+
+
+def precision(file_names, sents_tags_test):
+    file = ''
+    for file_name in file_names:
+        #print(file)
+        file += open(str(file_name)).read()
+    
+    sum1 , sum2 = 0 , 0
+    
+    sents_tags = get_tags(file)
+    
+    n_grams = n_gram_extraction(sents_tags)
+    
+    freq = frequency_distribution(n_grams)
+    
+    rewards__precision_list = []
+    for sentence in sents_tags_test :
+        #print(sentence)
+        tags = [word[1] for word in sentence]
+        rewards__precision_list.append( (Reward_Factor(freq, tags), precision_one_S(freq, tags)))
+        sum1 += rewards__precision_list[-1][0] * rewards__precision_list[-1][1]
+        #print('P : ', p_sentence)
+        #print('reward factor: ', Reward_Factor(freq, tags))
+        sum2 += rewards__precision_list[-1][1]
+    if sum2 == 0 : return 0
+    # print(sum1)
+    # print(sum2)
+    return sum1/sum2, rewards__precision_list
+
