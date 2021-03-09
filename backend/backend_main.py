@@ -266,3 +266,13 @@ def Reward_Factor(freq,sents_tags):
         if ' '.join(list(i[0])) in sents_tags_str and len(i[0]) > p:
             p = len(i[0])
     return p/l
+
+def precision_one_S(freq, sent_tags):
+    p = 1    
+    for i in range(1,len(sent_tags)):
+        
+        predecessor = (sent_tags[i-1], sent_tags[i])
+        if get_frequency_tag(freq, predecessor[0]) != 0 :
+            p *= (get_frequency_tuple(freq,predecessor) / get_frequency_tag(freq, predecessor[0]))
+    return p
+
