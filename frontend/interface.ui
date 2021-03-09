@@ -351,7 +351,7 @@ QPushButton:hover {
 </string>
                </property>
                <property name="text">
-                <string>Training</string>
+                <string>Induction</string>
                </property>
               </widget>
              </item>
@@ -391,7 +391,7 @@ QPushButton:hover {
 </string>
                </property>
                <property name="text">
-                <string>Inference</string>
+                <string>Analysis</string>
                </property>
               </widget>
              </item>
@@ -479,6 +479,12 @@ QPushButton:hover {
                     </property>
                     <item>
                      <widget class="QFrame" name="training_group_1">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -542,6 +548,9 @@ QPushButton:hover {
                           </property>
                           <item>
                            <widget class="QPlainTextEdit" name="training_corpus">
+                            <property name="enabled">
+                             <bool>true</bool>
+                            </property>
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                               <horstretch>0</horstretch>
@@ -560,11 +569,6 @@ QPushButton:hover {
 	color: rgba(225,225,225,0.7);
 	border-radius: 10px;
 	padding: 10px;
-}
-
-QPlainTextEdit:focus {
-	background-color: rgba(225,225,225,0.2);
-	color: rgba(225,225,225,1);
 }
 
 QScrollBar:horizontal {
@@ -647,6 +651,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                             <property name="horizontalScrollBarPolicy">
                              <enum>Qt::ScrollBarAlwaysOff</enum>
                             </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
+                            </property>
                             <property name="plainText">
                              <string>Corpus:</string>
                             </property>
@@ -657,6 +664,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                        </item>
                        <item>
                         <widget class="QFrame" name="training_grammar_frame">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                            <horstretch>0</horstretch>
@@ -708,6 +718,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                           </property>
                           <item>
                            <widget class="QPlainTextEdit" name="training_grammar">
+                            <property name="enabled">
+                             <bool>true</bool>
+                            </property>
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                               <horstretch>0</horstretch>
@@ -726,11 +739,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 	color: rgba(225,225,225,0.7);
 	border-radius: 10px;
 	padding: 10px;
-}
-
-QPlainTextEdit:focus {
-	background-color: rgba(225,225,225,0.2);
-	color: rgba(225,225,225,1);
 }
 
 QScrollBar:horizontal {
@@ -812,6 +820,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                             </property>
                             <property name="horizontalScrollBarPolicy">
                              <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="lineWrapMode">
+                             <enum>QPlainTextEdit::WidgetWidth</enum>
+                            </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
                             </property>
                             <property name="plainText">
                              <string>Grammar:
@@ -902,6 +916,16 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.07);
 }</string>
                          </property>
                          <property name="text">
@@ -924,6 +948,9 @@ QPushButton:pressed {
                        </item>
                        <item>
                         <widget class="QPushButton" name="training_btn_generate_grammar">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -960,6 +987,11 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.05);
 }</string>
                          </property>
                          <property name="text">
@@ -982,6 +1014,9 @@ QPushButton:pressed {
                        </item>
                        <item>
                         <widget class="QPushButton" name="training_btn_save_grammar">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -1018,6 +1053,11 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.05);
 }</string>
                          </property>
                          <property name="text">
@@ -1079,6 +1119,12 @@ QPushButton:pressed {
                     </property>
                     <item>
                      <widget class="QFrame" name="inference_group_1">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -1124,7 +1170,7 @@ QPushButton:pressed {
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_7">
+                         <layout class="QVBoxLayout" name="verticalLayout_4">
                           <property name="spacing">
                            <number>20</number>
                           </property>
@@ -1141,252 +1187,12 @@ QPushButton:pressed {
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QPlainTextEdit" name="inference_text">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Tw Cen MT</family>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPlainTextEdit {
-	background-color: rgba(225,225,225,0.1);
-	color: rgba(225,225,225,0.7);
-	border-radius: 10px;
-	padding: 10px;
-}
-
-QPlainTextEdit:focus {
-	background-color: rgba(225,225,225,0.2);
-	color: rgba(225,225,225,1);
-}
-QScrollBar:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    height: 14px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
-QScrollBar::handle:horizontal {
-    background: rgb(22, 210, 152);
-    min-width: 25px;
-	border-radius: 7px
-}
-QScrollBar::add-line:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    width: 20px;
-	border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    subcontrol-position: right;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    width: 20px;
-
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    subcontrol-position: left;
-    subcontrol-origin: margin;
-}
-QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
-{
-     background: none;
-}
-QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
-{
-     background: none;
-}
- QScrollBar:vertical {
-	border: none;
-    background: rgba(225,225,225,0.2);
-    width: 14px;
-    margin: 21px 0 21px 0;
-	border-radius: 0px;
- }
- QScrollBar::handle:vertical {	
-	background: rgb(22, 210, 152);
-    min-height: 25px;
-	border-radius: 7px
- }
- QScrollBar::add-line:vertical {
-     border: none;
-    background: rgba(225,225,225,0.2);
-     height: 20px;
-	border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
- QScrollBar::sub-line:vertical {
-	border: none;
-    background: rgba(225,225,225,0.2);
-     height: 20px;
-	border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     background: none;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }</string>
-                            </property>
-                            <property name="horizontalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
-                            </property>
-                            <property name="plainText">
-                             <string>Sentence:
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPlainTextEdit" name="inference_tags">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="maximumSize">
+                           <widget class="QLabel" name="inference_sents_number">
+                            <property name="minimumSize">
                              <size>
-                              <width>16777215</width>
-                              <height>100</height>
+                              <width>0</width>
+                              <height>50</height>
                              </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Tw Cen MT</family>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPlainTextEdit {
-	background-color: rgba(225,225,225,0.1);
-	color: rgba(225,225,225,0.7);
-	border-radius: 10px;
-	padding: 10px;
-}
-
-QPlainTextEdit:focus {
-	background-color: rgba(225,225,225,0.2);
-	color: rgba(225,225,225,1);
-}
-
-QScrollBar:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    height: 14px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
-QScrollBar::handle:horizontal {
-    background: rgb(22, 210, 152);
-    min-width: 25px;
-	border-radius: 7px
-}
-QScrollBar::add-line:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    width: 20px;
-	border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    subcontrol-position: right;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:horizontal {
-    border: none;
-    background: rgba(225,225,225,0.2);
-    width: 20px;
-
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    subcontrol-position: left;
-    subcontrol-origin: margin;
-}
-QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
-{
-     background: none;
-}
-QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
-{
-     background: none;
-}
- QScrollBar:vertical {
-	border: none;
-    background: rgba(225,225,225,0.2);
-    width: 14px;
-    margin: 21px 0 21px 0;
-	border-radius: 0px;
- }
- QScrollBar::handle:vertical {	
-	background: rgb(22, 210, 152);
-    min-height: 25px;
-	border-radius: 7px
- }
- QScrollBar::add-line:vertical {
-     border: none;
-    background: rgba(225,225,225,0.2);
-     height: 20px;
-	border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
- QScrollBar::sub-line:vertical {
-	border: none;
-    background: rgba(225,225,225,0.2);
-     height: 20px;
-	border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     background: none;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }</string>
-                            </property>
-                            <property name="horizontalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
-                            </property>
-                            <property name="plainText">
-                             <string>Tags:
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPlainTextEdit" name="inference_precision">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
                             </property>
                             <property name="maximumSize">
                              <size>
@@ -1401,6 +1207,42 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                              </font>
                             </property>
                             <property name="styleSheet">
+                             <string notr="true">QLabel {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>No sentences (Please click on Load text)</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPlainTextEdit" name="inference_sents">
+                            <property name="enabled">
+                             <bool>false</bool>
+                            </property>
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="contextMenuPolicy">
+                             <enum>Qt::NoContextMenu</enum>
+                            </property>
+                            <property name="styleSheet">
                              <string notr="true">QPlainTextEdit {
 	background-color: rgba(225,225,225,0.1);
 	color: rgba(225,225,225,0.7);
@@ -1411,17 +1253,228 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 QPlainTextEdit:focus {
 	background-color: rgba(225,225,225,0.2);
 	color: rgba(225,225,225,1);
-}</string>
-                            </property>
-                            <property name="verticalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
+}
+QScrollBar:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(22, 210, 152);
+    min-width: 25px;
+	border-radius: 7px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    width: 20px;
+	border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    width: 20px;
+
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgba(225,225,225,0.2);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: rgb(22, 210, 152);
+    min-height: 25px;
+	border-radius: 7px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgba(225,225,225,0.2);
+     height: 20px;
+	border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgba(225,225,225,0.2);
+     height: 20px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }</string>
                             </property>
                             <property name="horizontalScrollBarPolicy">
                              <enum>Qt::ScrollBarAlwaysOff</enum>
                             </property>
+                            <property name="tabChangesFocus">
+                             <bool>false</bool>
+                            </property>
+                            <property name="documentTitle">
+                             <string/>
+                            </property>
                             <property name="plainText">
-                             <string>Precision:
-</string>
+                             <string>Sentence:</string>
+                            </property>
+                            <property name="placeholderText">
+                             <string/>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPlainTextEdit" name="inference_tags">
+                            <property name="enabled">
+                             <bool>false</bool>
+                            </property>
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Tw Cen MT</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    height: 14px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(22, 210, 152);
+    min-width: 25px;
+	border-radius: 7px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    width: 20px;
+	border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgba(225,225,225,0.2);
+    width: 20px;
+
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgba(225,225,225,0.2);
+    width: 14px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: rgb(22, 210, 152);
+    min-height: 25px;
+	border-radius: 7px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgba(225,225,225,0.2);
+     height: 20px;
+	border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgba(225,225,225,0.2);
+     height: 20px;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }</string>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
+                            </property>
+                            <property name="plainText">
+                             <string>Tags:</string>
+                            </property>
+                            <property name="overwriteMode">
+                             <bool>false</bool>
+                            </property>
+                            <property name="placeholderText">
+                             <string>Tags:\n</string>
                             </property>
                            </widget>
                           </item>
@@ -1430,7 +1483,7 @@ QPlainTextEdit:focus {
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
-                              <height>60</height>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="frameShape">
@@ -1439,7 +1492,7 @@ QPlainTextEdit:focus {
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_14">
+                            <layout class="QHBoxLayout" name="horizontalLayout_10">
                              <property name="spacing">
                               <number>20</number>
                              </property>
@@ -1456,30 +1509,70 @@ QPlainTextEdit:focus {
                               <number>0</number>
                              </property>
                              <item>
-                              <spacer name="inference_hs3">
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
+                              <widget class="QPlainTextEdit" name="inference_precision">
+                               <property name="enabled">
+                                <bool>false</bool>
                                </property>
-                               <property name="sizeHint" stdset="0">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="maximumSize">
                                 <size>
-                                 <width>40</width>
-                                 <height>20</height>
+                                 <width>16777215</width>
+                                 <height>50</height>
                                 </size>
                                </property>
-                              </spacer>
+                               <property name="font">
+                                <font>
+                                 <family>Tw Cen MT</family>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPlainTextEdit {
+	background-color: rgba(225,225,225,0.1);
+	color: rgba(225,225,225,0.7);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+QPlainTextEdit:focus {
+	background-color: rgba(225,225,225,0.2);
+	color: rgba(225,225,225,1);
+}</string>
+                               </property>
+                               <property name="verticalScrollBarPolicy">
+                                <enum>Qt::ScrollBarAlwaysOff</enum>
+                               </property>
+                               <property name="horizontalScrollBarPolicy">
+                                <enum>Qt::ScrollBarAlwaysOff</enum>
+                               </property>
+                               <property name="readOnly">
+                                <bool>true</bool>
+                               </property>
+                               <property name="plainText">
+                                <string>Precision:</string>
+                               </property>
+                              </widget>
                              </item>
                              <item>
                               <widget class="QPushButton" name="inference_btn_previous">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
                                <property name="minimumSize">
                                 <size>
-                                 <width>180</width>
-                                 <height>60</height>
+                                 <width>90</width>
+                                 <height>50</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>180</width>
-                                 <height>60</height>
+                                 <width>90</width>
+                                 <height>50</height>
                                 </size>
                                </property>
                                <property name="font">
@@ -1505,6 +1598,11 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.05);
 }</string>
                                </property>
                                <property name="text">
@@ -1514,16 +1612,19 @@ QPushButton:pressed {
                              </item>
                              <item>
                               <widget class="QPushButton" name="inference_btn_next">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
                                <property name="minimumSize">
                                 <size>
-                                 <width>180</width>
-                                 <height>60</height>
+                                 <width>90</width>
+                                 <height>50</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>180</width>
-                                 <height>60</height>
+                                 <width>90</width>
+                                 <height>50</height>
                                 </size>
                                </property>
                                <property name="font">
@@ -1549,25 +1650,17 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.05);
 }</string>
                                </property>
                                <property name="text">
                                 <string>Next </string>
                                </property>
                               </widget>
-                             </item>
-                             <item>
-                              <spacer name="inference_hs4">
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>40</width>
-                                 <height>20</height>
-                                </size>
-                               </property>
-                              </spacer>
                              </item>
                             </layout>
                            </widget>
@@ -1628,6 +1721,9 @@ QPushButton:pressed {
                           </property>
                           <item>
                            <widget class="QPlainTextEdit" name="inference_grammar">
+                            <property name="enabled">
+                             <bool>true</bool>
+                            </property>
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                               <horstretch>0</horstretch>
@@ -1648,10 +1744,6 @@ QPushButton:pressed {
 	padding: 10px;
 }
 
-QPlainTextEdit:focus {
-	background-color: rgba(225,225,225,0.2);
-	color: rgba(225,225,225,1);
-}
 
 QScrollBar:horizontal {
     border: none;
@@ -1731,40 +1823,20 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
  }</string>
                             </property>
                             <property name="horizontalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                             <enum>Qt::ScrollBarAsNeeded</enum>
+                            </property>
+                            <property name="lineWrapMode">
+                             <enum>QPlainTextEdit::NoWrap</enum>
+                            </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
                             </property>
                             <property name="plainText">
                              <string>Grammar:
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 </string>
+                            </property>
+                            <property name="tabStopWidth">
+                             <number>20</number>
                             </property>
                            </widget>
                           </item>
@@ -1920,7 +1992,10 @@ QPushButton:pressed {
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="inference_btn_save_inference">
+                        <widget class="QPushButton" name="inference_btn_inference">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>180</width>
@@ -1957,10 +2032,15 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgb(22, 210, 152);
 	color: rgb(38, 62, 81);
+}
+
+QPushButton:disabled {
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.05);
 }</string>
                          </property>
                          <property name="text">
-                          <string>Inference</string>
+                          <string>Analyze Text</string>
                          </property>
                         </widget>
                        </item>

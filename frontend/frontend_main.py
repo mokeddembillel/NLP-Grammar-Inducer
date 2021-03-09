@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import QDir
 from PyQt5.QtGui import QColor
-
 from interface import Ui_MainWindow
 import re
 sys.path.append('../backend')
@@ -72,11 +71,23 @@ class MainWindow(QMainWindow):
         # Grammar
         self.grammar = None
         
+        # S content 
+        self.s_content_length = None
+        
+        # Corpus files list
+        self.files_names = None
+        
         # Test sentences with tags
         self.sents_tags_test = None
         
         # The number Of printed setntence
         self.printed_sentence = 0
+        
+        # precision
+        self.precision = None
+        
+        # Rewards List
+        self.rewards_precision_list = None
         
         ## UI Event Listeners
         ########################################################################
@@ -102,9 +113,30 @@ class MainWindow(QMainWindow):
         # Next Sentence
         self.ui.inference_btn_next.clicked.connect(self.inference_btn_next)
         
+        # inference
+        self.ui.inference_btn_inference.clicked.connect(self.inference_btn_inference)
+        
         
         # Show window
         self.show()
+    
+    def inference_btn_inference(self):        
+        worked, results, error = backend_main.inference_nltk(self.grammar, [word[1] for word in self.sents_tags_test[self.printed_sentence]], self.s_content_length)
+        if not worked:
+            file=open('../Logs/logs.txt','w')
+            file.write(' '.join([word[0] for word in self.sents_tags_test[self.printed_sentence]]))
+            file.close()
+            if not error:
+                self.ui.inference_grammar.setPlainText('No Derivation Tree for this \nsentence:\n\n Reward Factor: ' + str(self.rewards_precision_list[self.printed_sentence][0]))
+            else:
+                self.ui.inference_grammar.setPlainText('No Derivation Tree for this \nsentence:\n\n Error: Grammar does not \ncover some of the input \ntags')
+        else:
+            self.ui.inference_grammar.setPlainText('Derivation Tree:\n')
+            for result in results:  
+                #print(str(result))
+                self.ui.inference_grammar.appendPlainText(str(result))
+            #self.ui.inference_grammar.appendPlainText('\n Reward Factor: ' + str(self.rewards_list[self.printed_sentence]))
+
         
     def training_btn_load_corpus(self):
         dlg = QFileDialog()
@@ -112,9 +144,10 @@ class MainWindow(QMainWindow):
         dlg.setFilter(QDir.Files)
         
         if dlg.exec_():
-            file_names = dlg.selectedFiles()
+            self.files_names = dlg.selectedFiles()
+            
             file = ''
-            for file_name in file_names:
+            for file_name in self.files_names:
                 file += backend_main.read_file(file_name)
             self.ui.training_corpus.setPlainText(file)
             self.corpus = file
@@ -122,7 +155,7 @@ class MainWindow(QMainWindow):
 
     
     def training_btn_generate_grammar(self):
-        self.grammar, _ = backend_main.induce_grammar(self.corpus)
+        self.grammar, _, self.s_content_length = backend_main.induce_grammar(self.corpus)
         self.ui.training_grammar.setPlainText('Grammar:\n')
         self.ui.inference_grammar.setPlainText('Grammar:\n')
 
@@ -132,6 +165,10 @@ class MainWindow(QMainWindow):
         self.ui.training_btn_save_grammar.setEnabled(True)
         if self.sents_tags_test is not None and self.grammar is not None:
             self.ui.inference_btn_inference.setEnabled(True)
+            self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.sents_tags_test)
+            #self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.grammar, self.sents_tags_test)
+            self.ui.inference_precision.setPlainText('Precision: '+ str(self.precision))
+
         
     def training_btn_save_grammar(self):
         import time 
@@ -140,6 +177,8 @@ class MainWindow(QMainWindow):
         time = str(time).replace(' ','_').replace(':','_')
         path = path + time + '.txt'
         file=open(path,"w")
+        file.write('****'.join(self.files_names) + '****\n')
+        #file.write(str(self.s_content_length) + '****\n')
         for rule in self.grammar:
             file.write(rule[0] + ' ==> ' + rule[1] + '\n')
             
@@ -154,6 +193,11 @@ class MainWindow(QMainWindow):
             self.grammar = []
             self.ui.training_grammar.setPlainText('Grammar:\n')
             self.ui.inference_grammar.setPlainText('Grammar:\n')
+            self.files_names = file[0].split('****')
+            del self.files_names[-1]
+            del file[0]
+            # self.s_content_length = int(file[0].split('****')[0])
+            # del file[0]
             for line in file:
                 m = re.search(r'(NT[0-9]+) ==> (.*)',line)
                 self.grammar.append((m.group(1),m.group(2)))
@@ -162,6 +206,9 @@ class MainWindow(QMainWindow):
             self.ui.training_btn_save_grammar.setEnabled(True)
             if self.sents_tags_test is not None and self.grammar is not None:
                 self.ui.inference_btn_inference.setEnabled(True)
+                self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.sents_tags_test)
+                #self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.grammar, self.sents_tags_test)
+                self.ui.inference_precision.setPlainText('Precision: '+ str(self.precision))
     
     def inference_btn_load_text(self):
         dlg = QFileDialog()
@@ -179,20 +226,25 @@ class MainWindow(QMainWindow):
                         counter += 1
                     if counter > 3:
                         return True
-                    if i > 30:
+                        
+                    if i > 150:
                         break
                     i += 1
                 return False
             
             if not text_tagged(file): 
                 file = backend_main.tag_sentence(file)
-                
+            
+            #print(file)
             self.sents_tags_test = backend_main.get_tags(file, words=True)
+            #print(self.sents_tags_test)
             # Update Plains
             self.ui.inference_sents.setPlainText('')
             self.ui.inference_tags.setPlainText('')
             self.ui.inference_sents.appendPlainText(' '.join([word[0] for word in self.sents_tags_test[0]]))
+            #print([word for word in self.sents_tags_test[0]])
             self.ui.inference_tags.appendPlainText(' '.join([word[1] for word in self.sents_tags_test[0]]))
+            self.printed_sentence = 0
             # Update sentence number label
             self.ui.inference_sents_number.setText('Sentence number ' + str(self.printed_sentence + 1) + ' from ' + str(len(self.sents_tags_test)))
             # Update buttons status
@@ -201,6 +253,9 @@ class MainWindow(QMainWindow):
                 self.ui.inference_btn_next.setEnabled(True)
             if self.sents_tags_test is not None and self.grammar is not None:
                 self.ui.inference_btn_inference.setEnabled(True)
+                self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.sents_tags_test)
+                #self.precision, self.rewards_precision_list = backend_main.precision(self.files_names, self.grammar, self.sents_tags_test)
+                self.ui.inference_precision.setPlainText('Precision: '+ str(self.precision))
                 
     def inference_btn_previous(self):
         self.printed_sentence -= 1
