@@ -168,3 +168,56 @@ def tag_sentence(sent):
         text+=text1
     return text
 
+def get_grammar_str(grammar, s_content_length=None):
+    print(grammar)
+    for i in  grammar: 
+        if len(i[1].split()) != 2:
+            print(i)
+    gram_str = 'S ->'
+    
+    # for i in range(-1, s_content_length, -1):
+    #     gram_str = gram_str + ' ' + grammar[i][0] + ' |'
+        
+    for i in grammar:
+        gram_str = gram_str + ' ' + i[0] + ' |'
+    
+    gram_str = gram_str + '\n'
+    for i in grammar:
+        left=i[0]
+        right=''
+        right_list=i[1].split()
+        if re.search('NT[0-9]+',right_list[0]):
+            right=right_list[0]
+        else:
+            #right="'"+right_list[0]+"'"
+            right="\""+right_list[0]+"\""
+        if re.search('NT[0-9]+',right_list[1]):
+            right=right + " "  + right_list[1]
+        else:
+            #right=right + " " + "'"+right_list[1]+"'"
+            right=right + " " + "\""+right_list[1]+"\""
+        gram_str=gram_str+left+' -> '+right+'\n'
+    return gram_str
+
+def inference_nltk(grammar,list_of_tags, s_content_length=None):
+    
+    my_str_gram=get_grammar_str(grammar, s_content_length)
+    # print(my_str_gram)
+    # file=open('h_grammar.txt',"w")
+    # file.write(my_str_gram)
+    
+    my_str_gram=nltk.CFG.fromstring(my_str_gram)
+    #rd = RecursiveDescentParser(my_str_gram)
+    rd = EarleyChartParser(my_str_gram)
+    worked = False
+    results = []
+    error = False
+    try:
+        for i in rd.parse(list_of_tags):
+            worked = True
+            results.append(i)
+            #print(i)
+    except ValueError:
+        error = True
+    
+    return worked, results, error
