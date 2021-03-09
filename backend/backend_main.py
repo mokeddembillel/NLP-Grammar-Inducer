@@ -236,3 +236,33 @@ def get_frequency_tag(frequencies, tag):
             if j == tag:
                 return i[1]
     return freq
+
+# def Reward_Factor(grammar, sent_tags):
+#     n_grams = n_gram_extraction_one_sent(sent_tags, uni_bi_grams=1)
+#     print(n_grams)
+    
+#     l = len(sent_tags)
+#     if l == 0 : 
+#         return 0
+#     p = 0
+    
+#     for n_gram in n_grams:
+#         worked , _, _ = inference_nltk(grammar, list(n_gram))
+        
+#         if worked:
+#             p = len(n_gram)
+            
+#     return p/l
+
+def Reward_Factor(freq,sents_tags):
+    l = len(sents_tags)
+    
+    if l == 0 : 
+        return 0
+    p = 0
+    
+    sents_tags_str = ' '.join(sents_tags)
+    for i in freq:
+        if ' '.join(list(i[0])) in sents_tags_str and len(i[0]) > p:
+            p = len(i[0])
+    return p/l
