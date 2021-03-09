@@ -221,3 +221,18 @@ def inference_nltk(grammar,list_of_tags, s_content_length=None):
         error = True
     
     return worked, results, error
+
+def get_frequency_tuple(frequencies,rule):
+    # Get Frequency of rule
+    for frequency in frequencies:
+        if frequency[0] == rule:
+            return frequency[1]
+    return 0
+
+def get_frequency_tag(frequencies, tag):
+    freq = 0
+    for i in frequencies:
+        for j in i[0]:
+            if j == tag:
+                return i[1]
+    return freq
