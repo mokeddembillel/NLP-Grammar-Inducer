@@ -141,7 +141,7 @@ def induce_grammar(file):
 ##############################################################################
 
 def my_brown_tagger():
-    
+    # Train, Save and Load the Tagger
     
     # sample = brown.tagged_sents(categories=['news', 'editorial', 'reviews', 'religion', 'humor', 'science_fiction', 'adventure', 'lore', 'mystery', 'romance'])
     # default_tagger = DefaultTagger('NN')
@@ -159,6 +159,7 @@ def my_brown_tagger():
     return quad_tagger
 
 def tag_sentence(sent):
+    # Tokenize the sentence and used a Tagger trained on the brown corpus to tag it
     sent = word_tokenize(sent)
     my_tagger = my_brown_tagger()
     t = my_tagger.tag(sent)
@@ -169,6 +170,7 @@ def tag_sentence(sent):
     return text
 
 def get_grammar_str(grammar, s_content_length=None):
+    # Prepare and format the grammar in order to be used by the parser
     print(grammar)
     for i in  grammar: 
         if len(i[1].split()) != 2:
@@ -200,7 +202,7 @@ def get_grammar_str(grammar, s_content_length=None):
     return gram_str
 
 def inference_nltk(grammar,list_of_tags, s_content_length=None):
-    
+    # Parse a sentence using one of the parsers from nltk (currently using EarleyChartParser)
     my_str_gram=get_grammar_str(grammar, s_content_length)
     # print(my_str_gram)
     # file=open('h_grammar.txt',"w")
@@ -223,13 +225,14 @@ def inference_nltk(grammar,list_of_tags, s_content_length=None):
     return worked, results, error
 
 def get_frequency_tuple(frequencies,rule):
-    # Get Frequency of rule
+    # Get the frequency of a rule
     for frequency in frequencies:
         if frequency[0] == rule:
             return frequency[1]
     return 0
 
 def get_frequency_tag(frequencies, tag):
+    # Get the frequency of a tag
     freq = 0
     for i in frequencies:
         for j in i[0]:
@@ -255,6 +258,7 @@ def get_frequency_tag(frequencies, tag):
 #     return p/l
 
 def Reward_Factor(freq,sents_tags):
+    # Calculate the reward factor based on the n-grams used to generate the grammar
     l = len(sents_tags)
     
     if l == 0 : 
@@ -268,6 +272,7 @@ def Reward_Factor(freq,sents_tags):
     return p/l
 
 def precision_one_S(freq, sent_tags):
+    # Calculate the weight of one sentence 
     p = 1    
     for i in range(1,len(sent_tags)):
         
@@ -309,6 +314,7 @@ def precision_one_S(freq, sent_tags):
 
 
 def precision(file_names, sents_tags_test):
+    # Calculate the precision of all test sentences
     file = ''
     for file_name in file_names:
         #print(file)
@@ -335,4 +341,3 @@ def precision(file_names, sents_tags_test):
     # print(sum1)
     # print(sum2)
     return sum1/sum2, rewards__precision_list
-
